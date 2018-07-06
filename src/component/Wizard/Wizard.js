@@ -1,15 +1,17 @@
-import react, { Component } from 'react';
+import React, { Component } from 'react';
 
 
 class Wizard extends Component {
 
-}
 
-render() 
+
+render() {
     return (
         <div>
             Wizard
         </div>
     )
+}
+}
 
 export default Wizard;
