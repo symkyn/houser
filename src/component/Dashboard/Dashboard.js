@@ -40,7 +40,7 @@ render(){
     return (
         <div className='dashboard'>
             <h2>Dashboard</h2>
-            <Link to='/wizard'>
+            <Link to='/wizard/step1'>
                 <button>Add New Property</button>
             </Link>
             {houseList}
