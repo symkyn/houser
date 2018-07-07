@@ -26,6 +26,7 @@ app.use(express.static(__dirname + '/../build'));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -58,9 +59,14 @@ app.post('/api/newHouse', (req, res, next) => {
         })
 })
 
-app.delete('/api/delete:id', (req, res, next) => {
+app.delete('/api/delete/:id', (req, res, next) => {
     const { id } = req.params;
-    console.log(+id);
+    req.db.Houses.destroy(+id)
+        .then(property => res.status(200).send(property))
+        .catch(err => {
+            console.warn(err);
+            next({message: 'internal server error'})
+        })
 })
 
 app.use((err, req, res, next) => {
