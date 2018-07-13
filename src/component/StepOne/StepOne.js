@@ -63,7 +63,7 @@ render() {
             
             <form onSubmit={(e) => {e.preventDefault}} >
                 {inputs}
-                <button>Next Step</button>
+                <Link to='/wizard/step2'><button>Next Step</button></Link>
             </form>
             
         </div>
