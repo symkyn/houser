@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class StepOne extends Component {
     inputs = [
@@ -19,7 +18,7 @@ class StepOne extends Component {
         },
         {
             label: 'State',
-            property: 'state'
+            property: 'usState'
         },
         {
             label: 'Zip Code',
@@ -34,7 +33,7 @@ class StepOne extends Component {
         name: '',
         address: '',
         city: '',
-        state: '',
+        usState: '',
         zip: 0
     }
 
@@ -42,8 +41,9 @@ class StepOne extends Component {
 
 
 render() {
-    
-    
+    //const { name, address, city, usState, zip } = this.props;
+    console.log(this.props);
+    console.log(this.state);
     const inputs = this.inputs
         .map((input, i) => (
             <div key={`new-house-form-${i}`}>
@@ -75,4 +75,15 @@ handleChange(e, name) {
 }
 }
 
-export default StepOne;
+function mapStateToProps( state ) {
+    const { name, address, city, usState, zip} = state;
+    return {
+        name,
+        address,
+        city,
+        usState,
+        zip
+    };
+}
+
+export default connect(mapStateToProps)(StepOne);

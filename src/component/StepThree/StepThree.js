@@ -48,7 +48,7 @@ render() {
             Recommended Rent: {this.state.recommendedRent}
             <form onSubmit={(e) => {e.preventDefault}} >
                 {inputs}
-                <Link to='/wizard/step2'><button>Previous Step</button></Link>
+                <Link to='/wizard/step2'><button>Previous Step</button></Link>-
                 <button>Complete</button>
             </form>
             

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Redirect } from 'react-router';
-
 import { Switch, Route, Link } from 'react-router-dom';
+
 import StepOne from '../StepOne/StepOne';
 import StepTwo from '../StepTwo/StepTwo';
 import StepThree from '../StepThree/StepThree';
