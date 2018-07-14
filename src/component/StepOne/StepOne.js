@@ -42,9 +42,9 @@ class StepOne extends Component {
 
 
 render() {
-    const { updateStepOne } = this.props;
+    // const { updateStepOne } = this.props;
     console.log(this.props);
-    console.log(this.state);
+    // console.log(this.state);
     const inputs = this.inputs
         .map((input, i) => (
             <div key={`new-house-form-${i}`}>
@@ -64,9 +64,9 @@ render() {
             
             <form onSubmit={(e) => {e.preventDefault}} >
                 {inputs}
-                <Link to='/wizard/step2'>
-                    <button onClick={() => (updateStepOne(this.state))}>Next Step</button>
-                </Link>
+                {/* <Link to='/wizard/step2'> */}
+                    <button onClick={() => updateStepOne(...this.state)}>Next Step</button>
+                {/* </Link> */}
             </form>
             
         </div>

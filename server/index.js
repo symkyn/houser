@@ -20,7 +20,6 @@ massive(process.env.DB_CONNECTION_STRING)
     })
     .catch(err => console.warn(err))
 
-
 app.use( bodyParser.json() );
 app.use(express.static(__dirname + '/../build'));
 

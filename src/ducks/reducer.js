@@ -17,7 +17,11 @@ const UPDATE_STEPTHREE = "UPDATE_STEPTHREE";
 export default function reducer(state=initialState, action) {
     switch(action){
         case UPDATE_STEPONE:
-            return state;
+            return {name: action.payload.name,
+                    address: action.payload.address,
+                    city: action.payload.city,
+                    usState: action.payload.usState,
+                    zip: action.payload.zip};
         case UPDATE_STEPTWO:
             return state;
         case UPDATE_STEPTHREE:
@@ -26,6 +30,7 @@ export default function reducer(state=initialState, action) {
 }}
 
 export function updateStepOne( addressInfo ) {
+    
     return{
         type: UPDATE_STEPONE,
         payload: addressInfo
