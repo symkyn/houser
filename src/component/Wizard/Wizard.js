@@ -8,18 +8,18 @@ import StepThree from '../StepThree/StepThree';
 class Wizard extends Component {
     
 
-    constructor(){
-        super();
+    // constructor(){
+    //     super();
         
-    this.state={
-        name: '',
-        address: '',
-        city: '',
-        state: '',
-        zip: 0
-    }
+    // this.state={
+    //     name: '',
+    //     address: '',
+    //     city: '',
+    //     state: '',
+    //     zip: 0
+    // }
     
-}
+// }
 
 
 render() {

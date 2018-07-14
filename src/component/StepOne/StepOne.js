@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {updateStepOne} from '../../ducks/reducer';
 
 class StepOne extends Component {
     inputs = [
@@ -41,7 +42,7 @@ class StepOne extends Component {
 
 
 render() {
-    //const { name, address, city, usState, zip } = this.props;
+    const { updateStepOne } = this.props;
     console.log(this.props);
     console.log(this.state);
     const inputs = this.inputs
@@ -63,7 +64,9 @@ render() {
             
             <form onSubmit={(e) => {e.preventDefault}} >
                 {inputs}
-                <Link to='/wizard/step2'><button>Next Step</button></Link>
+                <Link to='/wizard/step2'>
+                    <button onClick={() => (updateStepOne(this.state))}>Next Step</button>
+                </Link>
             </form>
             
         </div>
@@ -86,4 +89,4 @@ function mapStateToProps( state ) {
     };
 }
 
-export default connect(mapStateToProps)(StepOne);
+export default connect(mapStateToProps, {updateStepOne})(StepOne);
