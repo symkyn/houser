@@ -1,39 +1,36 @@
 const initialState = {
-    name: '',
-    address: '',
-    city: '',
-    usState: '',
-    zip: 0,
+    name: 'proto-name',
+    address: 'proto-address',
+    city: 'proto-city',
+    usState: 'XX',
+    zip: 12345,
     url: '',
     amount: 0,
     rent: 0
 }
 
-const UPDATE_STEPONE = "UPDATE_STEPONE";
+const UPDATE_ADDRESS_INFO = "UPDATE_ADDRESS_INFO";
 const UPDATE_STEPTWO = "UPDATE_STEPTWO";
 const UPDATE_STEPTHREE = "UPDATE_STEPTHREE";
 
 
-export default function reducer(state=initialState, action) {
-    switch(action){
-        case UPDATE_STEPONE:
-            return {name: action.payload.name,
-                    address: action.payload.address,
-                    city: action.payload.city,
-                    usState: action.payload.usState,
-                    zip: action.payload.zip};
+function reducer(state=initialState, action) {
+    switch(action.type){
+        case UPDATE_ADDRESS_INFO:
+            return action.payload;
         case UPDATE_STEPTWO:
             return state;
         case UPDATE_STEPTHREE:
             return state;
         default: return state;
-}}
+    }
+}
 
-export function updateStepOne( addressInfo ) {
+export function updateStepOne( name, address, city, usState, zip ) {
     
-    return{
-        type: UPDATE_STEPONE,
-        payload: addressInfo
+    return {
+        type: UPDATE_ADDRESS_INFO,
+        payload: {name, address, city, usState, zip}
     };
 }
 
@@ -50,4 +47,6 @@ export function updateStepThree( rentInfo ) {
         payload: rentInfo
     };
 }
+
+export default reducer;
 

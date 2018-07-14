@@ -27,8 +27,8 @@ class StepOne extends Component {
         }
     ]
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         
     this.state={
         name: '',
@@ -42,9 +42,8 @@ class StepOne extends Component {
 
 
 render() {
-    // const { updateStepOne } = this.props;
+    const { updateStepOne } = this.props;
     console.log(this.props);
-    // console.log(this.state);
     const inputs = this.inputs
         .map((input, i) => (
             <div key={`new-house-form-${i}`}>
@@ -62,12 +61,16 @@ render() {
     return (
         <div>
             
-            <form onSubmit={(e) => {e.preventDefault}} >
+            
                 {inputs}
                 {/* <Link to='/wizard/step2'> */}
-                    <button onClick={() => updateStepOne(...this.state)}>Next Step</button>
+                    <button onClick={() => updateStepOne(this.state.name,
+                                                            this.state.address,
+                                                            this.state.city,
+                                                            this.state.usState,
+                                                            this.state.zip)}>Next Step</button>
                 {/* </Link> */}
-            </form>
+            
             
         </div>
     )
@@ -78,15 +81,15 @@ handleChange(e, name) {
 }
 }
 
-function mapStateToProps( state ) {
-    const { name, address, city, usState, zip} = state;
-    return {
-        name,
-        address,
-        city,
-        usState,
-        zip
-    };
-}
+// function mapStateToProps( state ) {
+//     const { name, address, city, usState, zip} = state;
+//     return {
+//         name,
+//         address,
+//         city,
+//         usState,
+//         zip
+//     };
+// }
 
-export default connect(mapStateToProps, {updateStepOne})(StepOne);
+export default connect(state=>state, {updateStepOne})(StepOne);
