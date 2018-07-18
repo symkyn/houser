@@ -40,10 +40,19 @@ class StepOne extends Component {
 
 }
 
+componentWillMount() {
+    this.setState({
+        name: this.props.name,
+        address: this.props.address,
+        city: this.props.city,
+        usState: this.props.usState,
+        zip: this.props.zip
+    })
+}
 
 render() {
     const { updateStepOne } = this.props;
-    console.log(this.props);
+    // console.log(this.props);
     const inputs = this.inputs
         .map((input, i) => (
             <div key={`new-house-form-${i}`}>
@@ -60,16 +69,14 @@ render() {
         ))
     return (
         <div>
-            
-            
                 {inputs}
-                {/* <Link to='/wizard/step2'> */}
+                <Link to='/wizard/step2'>
                     <button onClick={() => updateStepOne(this.state.name,
                                                             this.state.address,
                                                             this.state.city,
                                                             this.state.usState,
                                                             this.state.zip)}>Next Step</button>
-                {/* </Link> */}
+                </Link>
             
             
         </div>

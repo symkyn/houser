@@ -31,7 +31,7 @@ class StepThree extends Component {
 
 render() {
     const {updateStepThree} = this.props;
-    
+    console.log(this.props);
     const inputs = this.inputs
         .map((input, i) => (
             <div key={`new-house-form-${i}`}>
@@ -64,7 +64,7 @@ handleChange(e, name) {
 }
 
 handleSubmit(e, newProperty) {
-    axios.post('http://localhost:4000/api/newHouse', newProperty)
+    axios.post('/api/newHouse', newProperty)
         .then(result => {
                 this.setState({
                     imageurl: '',

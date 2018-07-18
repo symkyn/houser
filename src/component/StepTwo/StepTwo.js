@@ -14,6 +14,12 @@ class StepTwo extends Component {
 
 }
 
+componentWillMount() {
+    this.setState({
+        url: this.props.url
+    })
+}
+
 
 render() {
     const { updateStepTwo } = this.props;    
@@ -28,8 +34,12 @@ render() {
                         name='url'
                     />
             </label>
-            <Link to='/wizard/step1'><button>Previous Step</button></Link>
-            <Link to='/wizard/step3'><button>Next Step</button></Link>
+            <Link to='/wizard/step1'>
+                <button onClick={() => updateStepTwo(this.state.url)}>Previous Step</button>
+            </Link>
+            <Link to='/wizard/step3'>
+                <button onClick={() => updateStepTwo(this.state.url)}>Next Step</button>
+            </Link>
         </div>
     )
 }
@@ -46,4 +56,4 @@ function mapStateToProps( state ) {
         };
     }
 
-export default connect(mapStateToProps, {})(StepTwo);
+export default connect(mapStateToProps, {updateStepTwo})(StepTwo);

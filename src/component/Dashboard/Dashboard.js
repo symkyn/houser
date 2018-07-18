@@ -15,7 +15,7 @@ constructor() {
 }
 
 componentWillMount() {
-    axios.get('http://localhost:4000/api/houseList')
+    axios.get('/api/houseList')
         .then(results => {
             console.log(results.data)
             this.setState({
@@ -49,7 +49,7 @@ render(){
 }
 
 handleDelete(id) {
-    axios.delete(`http://localhost:4000/api/delete/${id}`)
+    axios.delete(`/api/delete/${id}`)
         .then(this.componentWillMount())
         .catch(err => console.warn(err))
 } 
