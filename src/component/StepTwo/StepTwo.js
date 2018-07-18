@@ -14,11 +14,11 @@ class StepTwo extends Component {
 
 }
 
-// componentDidMount() {
-//     this.setState({
-//         url: this.props.url
-//     })
-// }
+componentDidMount() {
+    this.setState({
+        url: this.props.url
+    })
+}
 
 
 render() {

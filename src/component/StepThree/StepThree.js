@@ -28,6 +28,12 @@ class StepThree extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 }
 
+componentDidMount() {
+    this.setState({
+        amount: this.props.amount,
+        rent: this.props.rent
+    })
+}
 
 render() {
     const {updateStepThree} = this.props;

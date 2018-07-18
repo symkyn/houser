@@ -41,15 +41,15 @@ class StepOne extends Component {
 
 }
 
-// componentDidMount() {
-//     this.setState({
-//         name: this.props.name,
-//         address: this.props.address,
-//         city: this.props.city,
-//         usState: this.props.usState,
-//         zip: this.props.zip
-//     })
-// }
+componentDidMount() {
+    this.setState({
+        name: this.props.name,
+        address: this.props.address,
+        city: this.props.city,
+        usState: this.props.usState,
+        zip: this.props.zip
+    })
+}
 
 render() {
     const { updateStepOne } = this.props;

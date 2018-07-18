@@ -63,7 +63,7 @@ export function updateStepTwo( url ) {
 }
 
 export function updateStepThree( amount, rent ) {
-    debugger
+ 
     return{
         type: UPDATE_STEPTHREE,
         payload: {amount: amount, rent: rent}
