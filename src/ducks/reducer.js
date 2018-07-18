@@ -12,6 +12,7 @@ const initialState = {
 const UPDATE_ADDRESS_INFO = "UPDATE_ADDRESS_INFO";
 const UPDATE_STEPTWO = "UPDATE_STEPTWO";
 const UPDATE_STEPTHREE = "UPDATE_STEPTHREE";
+const CANCEL_INPUTS = "CANCEL_INPUTS";
 
 
 function reducer(state=initialState, action) {
@@ -43,6 +44,8 @@ function reducer(state=initialState, action) {
                 url: state.url,
                 amount: action.payload.amount,
                 rent: action.payload.rent};
+        case CANCEL_INPUTS:
+            return action.payload;
         default: return state;
     }
 }
@@ -68,6 +71,13 @@ export function updateStepThree( amount, rent ) {
         type: UPDATE_STEPTHREE,
         payload: {amount: amount, rent: rent}
     };
+}
+
+export function cancelInputs() {
+    return {
+        type: CANCEL_INPUTS,
+        payload: initialState
+    }
 }
 
 export default reducer;

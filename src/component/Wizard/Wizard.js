@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import StepOne from '../StepOne/StepOne';
 import StepTwo from '../StepTwo/StepTwo';
 import StepThree from '../StepThree/StepThree';
+
+import * as Actions from '../../ducks/reducer';
 
 class Wizard extends Component {
     
@@ -23,12 +26,12 @@ class Wizard extends Component {
 
 
 render() {
-   
+   const {cancelInputs} = this.props;
     return (
         <div>
             Wizard
             <Link to='/'>
-                <button>Cancel</button>
+                <button onClick={()=> cancelInputs()}>Cancel</button>
             </Link>
             
             <Switch>
@@ -45,4 +48,4 @@ render() {
 
 
 
-export default Wizard;
+export default connect(state=>state, Actions)(Wizard);
