@@ -35,9 +35,17 @@ componentDidMount() {
     })
 }
 
+
 render() {
     const {updateStepThree} = this.props;
-
+    const newProperty = { name: this.props.name,
+                            address: this.props.address,
+                            city: this.props.city,
+                            usState: this.props.usState,
+                            zip: this.props.zip,
+                            img: this.props.url,
+                            mortgage: this.state.amount,
+                            rent: this.state.rent};
     const inputs = this.inputs
         .map((input, i) => (
             <div key={`new-house-form-${i}`}>
@@ -62,7 +70,7 @@ render() {
                         Previous Step
                     </button>
                 </Link>--
-                <button>Complete</button>
+                <button onClick={(e) => this.handleSubmit(e, newProperty)}>Complete</button>
             </form>
             
         </div>
@@ -71,16 +79,16 @@ render() {
 
 handleChange(e, name) {
     this.setState({ [name]: e.target.value});
+    let recommendedRent = this.state.amount * 1.25;
+    this.setState({ recommendedRent: recommendedRent});
 }
 
 handleSubmit(e, newProperty) {
+    console.log(newProperty);
+    debugger
     axios.post('/api/newHouse', newProperty)
         .then(result => {
-                this.setState({
-                    imageurl: '',
-                    name: '',
-                    price: 0
-                });
+                this.props.cancelInputs();
                 <Redirect to='/' />
             })
             .catch(err => console.warn(err))
@@ -88,21 +96,5 @@ handleSubmit(e, newProperty) {
 }
 
 }
-
-// function mapStateToProps( state ) {
-//     const { name, address, city, usState, zip, url, amount, rent} = state;
-//     return {
-//         name,
-//         address,
-//         city,
-//         usState,
-//         zip,
-//         url,
-//         amount,
-//         rent
-//     };
-// }
-
-
 
 export default connect(state=>state, Actions)(StepThree);

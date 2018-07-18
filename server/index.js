@@ -50,8 +50,9 @@ app.get('/api/houseList', (req, res, next) => {
 
 app.post('/api/newHouse', (req, res, next) => {
     const newHouse = req.body;
+    console.log(newHouse);
     req.db.Houses.insert(newHouse)
-        .then(house => res.status(201).send(house))
+        .then(newHouse => res.status(201).send(newHouse))
         .catch(err => {
             console.warn(err); 
             next({message: 'internal server error' })
