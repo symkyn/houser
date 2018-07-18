@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import updateStepThree from '../../ducks/reducer';
+import * as Actions from '../../ducks/reducer';
 
 class StepThree extends Component {
     inputs = [
@@ -31,7 +31,7 @@ class StepThree extends Component {
 
 render() {
     const {updateStepThree} = this.props;
-    console.log(this.props);
+
     const inputs = this.inputs
         .map((input, i) => (
             <div key={`new-house-form-${i}`}>
@@ -51,7 +51,11 @@ render() {
             Recommended Rent: {this.state.recommendedRent}
             <form onSubmit={(e) => {e.preventDefault}} >
                 {inputs}
-                <Link to='/wizard/step2'><button>Previous Step</button></Link>-
+                <Link to='/wizard/step2'>
+                    <button onClick={() => updateStepThree(this.state.amount, this.state.rent)}>
+                        Previous Step
+                    </button>
+                </Link>--
                 <button>Complete</button>
             </form>
             
@@ -79,4 +83,20 @@ handleSubmit(e, newProperty) {
 
 }
 
-export default connect(state=>state, {updateStepThree})(StepThree);
+// function mapStateToProps( state ) {
+//     const { name, address, city, usState, zip, url, amount, rent} = state;
+//     return {
+//         name,
+//         address,
+//         city,
+//         usState,
+//         zip,
+//         url,
+//         amount,
+//         rent
+//     };
+// }
+
+
+
+export default connect(state=>state, Actions)(StepThree);

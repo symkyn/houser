@@ -14,7 +14,7 @@ constructor() {
     }
 }
 
-componentWillMount() {
+componentDidMount() {
     axios.get('/api/houseList')
         .then(results => {
             console.log(results.data)

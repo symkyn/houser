@@ -14,16 +14,16 @@ class StepTwo extends Component {
 
 }
 
-componentWillMount() {
-    this.setState({
-        url: this.props.url
-    })
-}
+// componentDidMount() {
+//     this.setState({
+//         url: this.props.url
+//     })
+// }
 
 
 render() {
     const { updateStepTwo } = this.props;    
-    
+
     return (
         <div>
             <label >

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import {updateStepOne} from '../../ducks/reducer';
 
 class StepOne extends Component {
@@ -40,19 +41,19 @@ class StepOne extends Component {
 
 }
 
-componentWillMount() {
-    this.setState({
-        name: this.props.name,
-        address: this.props.address,
-        city: this.props.city,
-        usState: this.props.usState,
-        zip: this.props.zip
-    })
-}
+// componentDidMount() {
+//     this.setState({
+//         name: this.props.name,
+//         address: this.props.address,
+//         city: this.props.city,
+//         usState: this.props.usState,
+//         zip: this.props.zip
+//     })
+// }
 
 render() {
     const { updateStepOne } = this.props;
-    // console.log(this.props);
+   
     const inputs = this.inputs
         .map((input, i) => (
             <div key={`new-house-form-${i}`}>

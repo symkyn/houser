@@ -17,11 +17,32 @@ const UPDATE_STEPTHREE = "UPDATE_STEPTHREE";
 function reducer(state=initialState, action) {
     switch(action.type){
         case UPDATE_ADDRESS_INFO:
-            return action.payload;
+            return {name: action.payload.name,
+                    address: action.payload.address,
+                    city: action.payload.city,
+                    usState: action.payload.usState,
+                    zip: action.payload.zip,
+                    url: state.url,
+                    amount: state.amount,
+                    rent: state.rent};
         case UPDATE_STEPTWO:
-            return action.payload;
+            return {name: state.name,
+                    address: state.address,
+                    city: state.city,
+                    usState: state.usState,
+                    zip: state.zip,
+                    url: action.payload.url,
+                    amount: state.amount,
+                    rent: state.rent};
         case UPDATE_STEPTHREE:
-            return action.payload;
+            return {name: state.name,
+                address: state.address,
+                city: state.city,
+                usState: state.usState,
+                zip: state.zip,
+                url: state.url,
+                amount: action.payload.amount,
+                rent: action.payload.rent};
         default: return state;
     }
 }
@@ -30,7 +51,7 @@ export function updateStepOne( name, address, city, usState, zip ) {
     
     return {
         type: UPDATE_ADDRESS_INFO,
-        payload: {name, address, city, usState, zip}
+        payload: {name: name, address: address, city: city, usState: usState, zip: zip}
     };
 }
 
@@ -42,9 +63,10 @@ export function updateStepTwo( url ) {
 }
 
 export function updateStepThree( amount, rent ) {
+    debugger
     return{
         type: UPDATE_STEPTHREE,
-        payload: {amount, rent}
+        payload: {amount: amount, rent: rent}
     };
 }
 
