@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import {updateStepTwo} from '../../ducks/reducer';
+
 class StepTwo extends Component {
-        constructor(){
-        super();
+        constructor(props){
+        super(props);
         
     this.state={
         url: ''
@@ -14,7 +16,7 @@ class StepTwo extends Component {
 
 
 render() {
-        
+    const { updateStepTwo } = this.props;    
     
     return (
         <div>
@@ -37,4 +39,11 @@ handleChange(e) {
 }
 }
 
-export default StepTwo;
+function mapStateToProps( state ) {
+        const { url } = state;
+        return {
+            url
+        };
+    }
+
+export default connect(mapStateToProps, {})(StepTwo);

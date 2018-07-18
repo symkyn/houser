@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 import { Redirect, Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+
+import updateStepThree from '../../ducks/reducer';
 
 class StepThree extends Component {
     inputs = [
@@ -15,8 +17,8 @@ class StepThree extends Component {
         }
     ]
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         
     this.state={
         amount: '',
@@ -28,6 +30,7 @@ class StepThree extends Component {
 
 
 render() {
+    const {updateStepThree} = this.props;
     
     const inputs = this.inputs
         .map((input, i) => (
@@ -76,4 +79,4 @@ handleSubmit(e, newProperty) {
 
 }
 
-export default StepThree;
+export default connect(state=>state, {updateStepThree})(StepThree);
