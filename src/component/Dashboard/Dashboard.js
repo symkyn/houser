@@ -29,9 +29,7 @@ render(){
     const houseList = this.state.houses.map((c, i) => 
         {
            return(
-                <House 
-                    deleteProperty = {(id) => this.handleDelete(id)}
-                    key={`house ${i}`} 
+                <House  deleteProperty = {(id) => this.handleDelete(id)}  key={`house ${i}`} 
                     home={c} 
                 />
            )
