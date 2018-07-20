@@ -14,7 +14,7 @@ export default function House(props) {
             Zip: {props.home.zip}
             <br />
             <div className="rentInfo">
-            Monthly Mortgage: {props.home.mortgage}
+            Monthly Mortgage: {props.home.mortgage} ||
             Desired Rent: {props.home.rent}
             </div>
             <button onClick={(e) => {e.preventDefault(); props.deleteProperty(props.home.id)}}>Delete</button>

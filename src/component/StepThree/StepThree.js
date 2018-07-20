@@ -38,7 +38,7 @@ componentDidMount() {
 
 render() {
     const {updateStepThree} = this.props;
-    const newProperty = { name: this.props.name,
+    let newProperty = { name: this.props.name,
                             address: this.props.address,
                             city: this.props.city,
                             usState: this.props.usState,
@@ -84,12 +84,12 @@ handleChange(e, name) {
 }
 
 handleSubmit(e, newProperty) {
-    console.log(newProperty);
-    debugger
+    e.preventDefault();
     axios.post('/api/newHouse', newProperty)
         .then(result => {
+                console.log(this.props);
                 this.props.cancelInputs();
-                <Redirect to='/' />
+                this.props.history.push('/');
             })
             .catch(err => console.warn(err))
         

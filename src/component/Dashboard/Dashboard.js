@@ -50,7 +50,7 @@ render(){
 
 handleDelete(id) {
     axios.delete(`/api/delete/${id}`)
-        .then(this.componentWillMount())
+        .then(this.componentDidMount())
         .catch(err => console.warn(err))
 } 
 
